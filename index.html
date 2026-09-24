@@ -86,6 +86,7 @@
             <source src="assets/hero.mp4" type="video/mp4">
             <source src="assets/hero.webm" type="video/webm">
           </video>
+          <button class="tap" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
           <img class="shot poster" src="assets/hero-poster.jpg" width="540" height="1174" alt="iPhone showing a MasterTech call: measurement tiles for superheat, subcool, suction and head, and an AI Diagnosis card reading Low refrigerant charge at 86% confidence.">
         </div>
       </div>
@@ -390,9 +391,19 @@
 
 <script>
 (function(){
-  var v=document.querySelector('.hero-phone video');
-  if(v&&window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    v.removeAttribute('autoplay');v.removeAttribute('loop');v.pause();
+  var ph=document.querySelector('.hero-phone'),v=ph&&ph.querySelector('video');
+  if(v){
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      v.removeAttribute('autoplay');v.removeAttribute('loop');v.pause();
+    }else{
+      // Autoplay can be refused (iOS Low Power Mode, data saver): retry once, then show a tap-to-play control.
+      v.muted=true;
+      var tryPlay=function(){var p=v.play();if(p&&p.catch)p.catch(function(){ph.classList.add('needs-tap');});};
+      tryPlay();
+      v.addEventListener('playing',function(){ph.classList.remove('needs-tap');});
+      ph.addEventListener('click',function(){if(ph.classList.contains('needs-tap'))tryPlay();});
+      document.addEventListener('visibilitychange',function(){if(!document.hidden&&v.paused&&!ph.classList.contains('needs-tap'))tryPlay();});
+    }
   }
 })();
 </script>
