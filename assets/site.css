@@ -40,22 +40,22 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.1;text-wrap:bala
 /* ---------- buttons ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 20px;border-radius:14px;font-weight:600;font-size:16px;line-height:1.15;text-decoration:none;border:1px solid transparent;color:var(--text);transition:background .15s,border-color .15s,transform .05s;text-align:center}
 .btn.primary{background:var(--accent);color:#fff}
-.btn.primary:hover{background:var(--accent-press)}
+@media(hover:hover){.btn.primary:hover{background:var(--accent-press)}}
 .btn.ghost{background:transparent;border-color:var(--line2)}
-.btn.ghost:hover{background:var(--panel2);border-color:rgba(255,255,255,.28)}
+@media(hover:hover){.btn.ghost:hover{background:var(--panel2);border-color:rgba(255,255,255,.28)}}
 .btn:active{transform:translateY(1px)}
 .badge{display:inline-block;line-height:0;border-radius:9px;flex:none}
 .badge img{height:56px;width:auto;max-width:none}
 .badge.md img{height:52px}
 .badge.sm img{height:48px}
-.badge:hover{opacity:.92}
+@media(hover:hover){.badge:hover{opacity:.92}}
 .soon{display:inline-flex;flex-direction:column-reverse;justify-content:center;height:56px;padding:0 18px;border:1px solid var(--line2);border-radius:9px;background:rgba(255,255,255,.03);line-height:1.05;white-space:nowrap;cursor:default;flex:none}
 .soon small{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 .soon b{font-size:20px;font-weight:600;letter-spacing:-.01em;color:var(--text);margin-top:3px}
 .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:12px 14px;margin-top:28px}
 .ctas .micro{flex-basis:100%;margin-top:2px}
 .arrow{display:inline-flex;align-items:center;gap:8px;font-weight:600;text-decoration:none;color:var(--ink);min-height:44px}
-.arrow:hover{text-decoration:underline;text-underline-offset:3px}
+@media(hover:hover){.arrow:hover{text-decoration:underline;text-underline-offset:3px}}
 .arrow svg{width:18px;height:18px;flex:none}
 .arrow.down svg{transform:rotate(90deg)}
 .hero .ctas .arrow{margin-top:-6px;font-size:16px}
@@ -64,14 +64,15 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.1;text-wrap:bala
 .top{position:sticky;top:0;z-index:50;background:rgba(22,24,29,.84);-webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;min-height:62px;gap:12px}
 .brand{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:18px;letter-spacing:-.01em;color:var(--text);text-decoration:none;white-space:nowrap;min-height:44px}
-.brand .dot{width:11px;height:11px;border-radius:3px;background:var(--accent);box-shadow:0 0 0 3px rgba(65,105,240,.22);flex:none}
+.brand .mark{width:17px;height:17px;border-radius:22.37%;outline:1px solid rgba(255,255,255,.14);outline-offset:-1px;flex:none}
 .brand b{font-weight:600;color:var(--ink)}
 .nav{display:none;gap:22px}
 .nav a{color:var(--dim);text-decoration:none;font-weight:500;font-size:15px;padding:10px 0}
-.nav a:hover,.nav a[aria-current]{color:var(--text)}
+.nav a[aria-current]{color:var(--text)}
+@media(hover:hover){.nav a:hover{color:var(--text)}}
 .roles{display:flex;align-items:center;gap:2px;padding:3px;border:1px solid var(--line2);border-radius:999px;flex:none}
 .roles a{display:inline-flex;align-items:center;min-height:38px;padding:0 13px;border-radius:999px;font-size:14px;font-weight:500;line-height:1;color:var(--text);text-decoration:none;white-space:nowrap;transition:background .15s,color .15s}
-.roles a:hover{background:var(--panel2)}
+@media(hover:hover){.roles a:hover{background:var(--panel2)}}
 .roles a[aria-current]{background:rgba(65,105,240,.18);color:var(--ink)}
 .roles .l{display:none}
 @media(min-width:720px){.roles .s{display:none}.roles .l{display:inline}.roles a{padding:0 16px}}
@@ -82,6 +83,18 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.1;text-wrap:bala
 .phone::before{content:"";position:absolute;top:3.1%;left:50%;width:27%;height:2.9%;transform:translateX(-50%);background:#000;border-radius:999px;z-index:2}
 .phone::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 5px #0B0C0F,inset 0 0 0 6px rgba(255,255,255,.08);pointer-events:none;z-index:2}
 .phone>.shot{width:100%;height:100%;object-fit:cover;object-position:top center;background:var(--panel)}
+.hero-phone[data-anim]{cursor:pointer;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+.hero-phone video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
+.hero-phone video::-webkit-media-controls{display:none!important}
+.hero-phone>.anim{position:absolute;inset:0;z-index:1;opacity:0;transition:opacity .25s;-webkit-user-drag:none}
+.hero-phone>.anim.on{opacity:1}
+.clip-btn{position:absolute;right:7%;bottom:2.6%;z-index:3;width:44px;height:44px;display:grid;place-items:center;padding:0;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(11,12,15,.62);color:#fff;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);-webkit-tap-highlight-color:transparent}
+.clip-btn[hidden]{display:none}
+@media(hover:hover){.clip-btn:hover{background:rgba(11,12,15,.8)}}
+.clip-btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:999px}
+.clip-btn svg{width:18px;height:18px}
+.clip-btn .i-play,.clip-btn.is-paused .i-pause{display:none}
+.clip-btn.is-paused .i-play{display:block}
 .phone.md{width:min(100%,250px);--pr:38px}
 .phone.sm{width:min(100%,200px);--pr:32px}
 .peek{position:relative;overflow:hidden}
@@ -100,7 +113,6 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.1;text-wrap:bala
 .hero-visual{position:relative}
 .hero-visual::before{content:"";position:absolute;inset:6% -10% 0;background:radial-gradient(55% 45% at 50% 34%,rgba(65,105,240,.32),transparent 70%);filter:blur(26px);pointer-events:none}
 .hero-phone{width:min(100%,320px);position:relative}
-.hero-phone .poster{display:none}
 @media(min-width:900px){
   .hero{padding:56px 0 32px}
   .hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:56px}
@@ -269,8 +281,11 @@ footer{border-top:1px solid var(--line);padding:48px 0 calc(40px + env(safe-area
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px 18px;margin-top:28px}
 .fcol h4{margin:0 0 8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:600}
 .fcol a{display:block;color:var(--text);text-decoration:none;padding:7px 0;font-size:16px;overflow-wrap:anywhere}
-.fcol a:hover{color:var(--ink)}
+@media(hover:hover){.fcol a:hover{color:var(--ink)}}
 .fcol.support{grid-column:1/-1}
+.fcol a.call{display:inline-flex;min-height:48px;padding:0 18px;margin-top:2px;font-size:16px;overflow-wrap:normal}
+@media(hover:hover){.fcol a.call:hover{color:var(--text)}}
+.call svg{width:18px;height:18px;flex:none}
 .fmicro{margin-top:30px;font-size:13px;color:var(--dim);max-width:60ch}
 @media(min-width:800px){.fgrid{grid-template-columns:repeat(3,1fr)}.fcol.support{grid-column:auto}}
 @media(min-width:900px){footer{padding-bottom:48px}}
@@ -278,6 +293,4 @@ footer{border-top:1px solid var(--line);padding:48px 0 calc(40px + env(safe-area
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{transition:none!important;animation:none!important}
-  .hero-phone video{display:none}
-  .hero-phone .poster{display:block}
 }

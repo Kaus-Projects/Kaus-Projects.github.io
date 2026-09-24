@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=dcb2988">
+<link rel="stylesheet" href="assets/site.css?v=de02537">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"MasterTech.ai","operatingSystem":"iOS","applicationCategory":"BusinessApplication","url":"https://kaus-projects.github.io/","installUrl":"https://apps.apple.com/us/app/mastertech-ai/id6786938615","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A free iPhone app that walks an HVAC technician from a broken unit to a confirmed diagnosis, one step at a time, then keeps the call on their record."}
 </script>
@@ -46,11 +46,12 @@
   <symbol id="i-steps" viewBox="0 0 24 24"><path d="M5 6h2M5 12h2M5 18h2M11 6h8M11 12h8M11 18h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
   <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
   <symbol id="i-arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.8 3.5h2.6l1.4 4.1-2 1.3a11.5 11.5 0 0 0 6.3 6.3l1.3-2 4.1 1.4v2.6a2.3 2.3 0 0 1-2.5 2.3A15.6 15.6 0 0 1 4.5 6a2.3 2.3 0 0 1 2.3-2.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
 </svg>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#main" aria-label="MasterTech home"><span class="dot" aria-hidden="true"></span>MasterTech</a>
+    <a class="brand" href="#main" aria-label="MasterTech home"><img class="mark" src="assets/mark-64.png?v=c7eb0d1" width="17" height="17" alt="">MasterTech</a>
     <nav class="nav" aria-label="Sections">
       <a href="#how">How it works</a>
       <a href="#inside">What's inside</a>
@@ -81,12 +82,12 @@
         </div>
       </div>
       <div class="hero-visual">
-        <div class="phone hero-phone">
-          <video class="shot" poster="assets/hero-poster.jpg?vfb01f65" autoplay muted loop playsinline width="540" height="1174" aria-label="MasterTech on iPhone: choosing a role, the home screen, picking the unit type, entering readings, then the AI diagnosis: Low refrigerant charge at 86% confidence.">
-            <source src="assets/hero.mp4?vfb01f65" type="video/mp4">
-            <source src="assets/hero.webm?vfb01f65" type="video/webm">
+        <div class="phone hero-phone" data-anim="assets/hero-anim.webp?v=f212e48">
+          <video class="shot" poster="assets/hero-poster.jpg?v=0955804" autoplay muted loop playsinline preload="auto" width="540" height="1174" aria-label="MasterTech on iPhone: choosing a role, the home screen, picking the unit type, entering readings, then the AI diagnosis: Low refrigerant charge at 86% confidence.">
+            <source src="assets/hero.mp4?v=defa6be" type="video/mp4">
+            <source src="assets/hero.webm?v=d51ec5b" type="video/webm">
           </video>
-          <img class="shot poster" src="assets/hero-poster.jpg?vfb01f65" width="540" height="1174" alt="iPhone showing a MasterTech call: measurement tiles for superheat, subcool, suction and head, and an AI Diagnosis card reading Low refrigerant charge at 86% confidence.">
+          <button class="clip-btn" type="button" aria-label="Pause video" hidden><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.2v14H7zM13.8 5H17v14h-3.2z" fill="currentColor"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6L19 12z" fill="currentColor"/></svg></button>
         </div>
       </div>
     </div>
@@ -347,7 +348,7 @@
       </div>
       <div class="talk">
         <p>Running 10+ techs?</p>
-        <a class="arrow" href="mailto:kaustubhdeshpande@me.com?subject=MasterTech%20company%20pricing">Talk to us<svg aria-hidden="true"><use href="#i-arr"/></svg></a>
+        <a class="arrow" href="tel:+12146821825">Talk to us: 214-682-1825<svg aria-hidden="true"><use href="#i-arr"/></svg></a>
       </div>
       <p class="micro plan-note">Download free, then pick a plan from the Billing screen in the app. Plans are purchased on the web. Cancel any time.</p>
     </div>
@@ -399,8 +400,8 @@
         <a href="https://kaus-projects.github.io/mastertech-legal/terms.html">Terms of Service</a>
       </div>
       <div class="fcol support">
-        <h4>Support</h4>
-        <a href="mailto:kaustubhdeshpande@me.com">kaustubhdeshpande@me.com</a>
+        <h4>Contact</h4>
+        <a class="btn ghost call" href="tel:+12146821825"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call or text 214-682-1825</a>
       </div>
     </div>
     <p class="fmicro">© 2026 MasterTech. Apple, iPhone and App Store are trademarks of Apple Inc.</p>
@@ -408,38 +409,6 @@
 </footer>
 
 
-<script>
-(function(){
-  var ph=document.querySelector('.hero-phone'),v=ph&&ph.querySelector('video');
-  if(v){
-    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-      v.removeAttribute('autoplay');v.removeAttribute('loop');v.pause();
-    }else{
-      // Phones can refuse to autoplay <video> (iOS Low Power Mode, data saver, some in-app
-      // browsers). Animated images are never blocked, so swap in the same clip as an
-      // animated WebP. It only downloads when the video was refused.
-      var swapped=false,started=false;
-      var toImage=function(){
-        if(swapped||started)return;swapped=true;
-        var img=new Image();img.className='shot anim';img.width=540;img.height=1174;img.decoding='async';
-        img.alt=v.getAttribute('aria-label')||'';
-        img.onload=function(){v.replaceWith(img);};
-        img.src='assets/hero-anim.webp?v=anim-0a48fd4';
-      };
-      v.addEventListener('playing',function(){started=true;});
-      v.muted=true;v.playsInline=true;
-      if(/[?&]anim=1/.test(location.search)){toImage();}
-      else{
-        var p=v.play();if(p&&p.catch)p.catch(toImage);
-        // neither playing nor rejected: once it has data but still sits paused, it was refused
-        var t=0,iv=setInterval(function(){t+=500;
-          if(started||swapped||t>15000){clearInterval(iv);return;}
-          if(t>=3000&&v.paused&&v.readyState>=2){clearInterval(iv);toImage();}
-        },500);
-      }
-    }
-  }
-})();
-</script>
+<script src="assets/clip.js?v=8eed32c"></script>
 </body>
 </html>
