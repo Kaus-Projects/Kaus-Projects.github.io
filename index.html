@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MasterTech.ai — The app that helps HVAC techs figure out what's wrong</title>
-<meta name="description" content="MasterTech.ai is a free iPhone app that walks an HVAC technician from a broken unit to a confirmed diagnosis, one step at a time, then keeps the call on their record. Live dashboard for contractors.">
+<title>MasterTech — The app that helps HVAC techs figure out what's wrong</title>
+<meta name="description" content="MasterTech is a free iPhone app that walks an HVAC technician from a broken unit to a confirmed diagnosis, one step at a time, then keeps the call on their record. Live dashboard for contractors.">
 <link rel="canonical" href="https://kaus-projects.github.io/">
 <meta name="theme-color" content="#16181D">
 <meta name="color-scheme" content="dark">
@@ -12,16 +12,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/icon-180.png">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="MasterTech.ai">
+<meta property="og:site_name" content="MasterTech">
 <meta property="og:url" content="https://kaus-projects.github.io/">
-<meta property="og:title" content="MasterTech.ai — The app that helps HVAC techs figure out what's wrong">
+<meta property="og:title" content="MasterTech — The app that helps HVAC techs figure out what's wrong">
 <meta property="og:description" content="Pick the unit, enter your readings, answer one question at a time. MasterTech ranks the likely faults, flags anything unsafe and writes the customer summary. Free on the iPhone App Store.">
 <meta property="og:image" content="https://kaus-projects.github.io/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="MasterTech.ai: The app that helps HVAC techs figure out what's wrong. Two iPhone screens: an AI diagnosis and a contractor dashboard.">
+<meta property="og:image:alt" content="MasterTech: The app that helps HVAC techs figure out what's wrong. Two iPhone screens: an AI diagnosis and a contractor dashboard.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MasterTech.ai — The app that helps HVAC techs figure out what's wrong">
+<meta name="twitter:title" content="MasterTech — The app that helps HVAC techs figure out what's wrong">
 <meta name="twitter:description" content="Guided AI diagnostics for the tech. A live dashboard for the boss. Free on the iPhone App Store.">
 <meta name="twitter:image" content="https://kaus-projects.github.io/assets/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,15 +50,17 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#main" aria-label="MasterTech.ai home"><span class="dot" aria-hidden="true"></span>MasterTech<b>.ai</b></a>
+    <a class="brand" href="#main" aria-label="MasterTech home"><span class="dot" aria-hidden="true"></span>MasterTech</a>
     <nav class="nav" aria-label="Sections">
       <a href="#how">How it works</a>
       <a href="#inside">What's inside</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="badge sm" href="https://apps.apple.com/us/app/mastertech-ai/id6786938615"><img src="assets/appstore-badge.svg" alt="Download on the App Store" width="144" height="48"></a>
-    <a class="role" href="#doors">Techs · Contractors</a>
+    <nav class="roles" aria-label="By role">
+      <a href="techs/"><span class="l">For technicians</span><span class="s">Techs</span></a>
+      <a href="contractors/"><span class="l">For contractors</span><span class="s">Contractors</span></a>
+    </nav>
   </div>
 </header>
 
@@ -73,8 +75,9 @@
         <p class="lede">Pick the unit, enter your readings, answer one question at a time. MasterTech ranks the likely faults, flags anything unsafe and writes the customer summary, then keeps the call on your record.</p>
         <div class="ctas" id="hero-ctas">
           <a class="badge" href="https://apps.apple.com/us/app/mastertech-ai/id6786938615"><img src="assets/appstore-badge.svg" alt="Download on the App Store" width="168" height="56"></a>
-          <a class="btn ghost" href="#how">See how it works</a>
+          <span class="soon"><b>Android</b><small>Coming soon</small></span>
           <p class="micro">Free to download. Your first 3 diagnoses are on us.</p>
+          <a class="arrow down" href="#how">See how it works<svg aria-hidden="true"><use href="#i-arr"/></svg></a>
         </div>
       </div>
       <div class="hero-visual">
@@ -104,9 +107,8 @@
             <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Every closed call goes on your record for the next employer.</span></li>
           </ul>
           <div class="ctas">
-            <a class="badge md" href="https://apps.apple.com/us/app/mastertech-ai/id6786938615"><img src="assets/appstore-badge.svg" alt="Download on the App Store" width="156" height="52"></a>
-            <a class="arrow" href="techs/">More for technicians<svg aria-hidden="true"><use href="#i-arr"/></svg></a>
             <p class="micro">3 free AI diagnostics. Then $39 a month, or nothing if your company has a plan.</p>
+            <a class="arrow" href="techs/">More for technicians<svg aria-hidden="true"><use href="#i-arr"/></svg></a>
           </div>
           <div class="peek">
             <div class="phone md">
@@ -125,9 +127,8 @@
             <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Browse open-to-work techs by certification and request an intro, all from your phone.</span></li>
           </ul>
           <div class="ctas">
-            <a class="badge md" href="https://apps.apple.com/us/app/mastertech-ai/id6786938615"><img src="assets/appstore-badge.svg" alt="Download on the App Store" width="156" height="52"></a>
-            <a class="arrow" href="contractors/">More for contractors<svg aria-hidden="true"><use href="#i-arr"/></svg></a>
             <p class="micro">3 free AI diagnostics for your company, then $39 per technician per month. Your techs never pay.</p>
+            <a class="arrow" href="contractors/">More for contractors<svg aria-hidden="true"><use href="#i-arr"/></svg></a>
           </div>
           <div class="peek">
             <div class="phone md">
@@ -326,10 +327,7 @@
             <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Team dashboard: live calls, callbacks, monthly reports</span></li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Techs on a company plan never pay</span></li>
           </ul>
-          <div class="ctas">
-            <a class="badge md" href="https://apps.apple.com/us/app/mastertech-ai/id6786938615"><img src="assets/appstore-badge.svg" alt="Download on the App Store" width="156" height="52"></a>
-            <p class="micro">Download free, then activate a plan from the Billing screen in the app. Plans are purchased on the web. Cancel any time.</p>
-          </div>
+          <p class="micro plan-note">Download free, then activate a plan from the Billing screen in the app. Plans are purchased on the web. Cancel any time.</p>
         </div>
       </div>
     </div>
@@ -363,30 +361,13 @@
     </div>
   </section>
 
-  <!-- FINAL CTA -->
-  <section class="sec band final" aria-labelledby="final-h2">
-    <div class="wrap">
-      <p class="eyebrow">Free on the iPhone App Store</p>
-      <h2 id="final-h2" class="h2">Start on the call in front of you.</h2>
-      <p class="lede">Download free. Your first 3 AI diagnostics are on us.</p>
-      <div class="ctas">
-        <a class="badge" href="https://apps.apple.com/us/app/mastertech-ai/id6786938615"><img src="assets/appstore-badge.svg" alt="Download on the App Store" width="168" height="56"></a>
-        <p class="micro">iPhone only for now. Techs on a company plan never pay.</p>
-      </div>
-    </div>
-  </section>
-
 </main>
 
 <footer aria-label="Footer">
   <div class="wrap">
-    <p class="fbrand">MasterTech.ai</p>
+    <p class="fbrand">MasterTech</p>
     <p class="dim">Built for the field.</p>
     <div class="fgrid">
-      <div class="fcol">
-        <h4>Get the app</h4>
-        <a href="https://apps.apple.com/us/app/mastertech-ai/id6786938615">Download on the App Store</a>
-      </div>
       <div class="fcol">
         <h4>By role</h4>
         <a href="techs/">For technicians</a>
@@ -402,26 +383,13 @@
         <a href="mailto:kaustubhdeshpande@me.com">kaustubhdeshpande@me.com</a>
       </div>
     </div>
-    <p class="fmicro">© 2026 MasterTech.ai. Apple, iPhone and App Store are trademarks of Apple Inc.</p>
+    <p class="fmicro">© 2026 MasterTech. Apple, iPhone and App Store are trademarks of Apple Inc.</p>
   </div>
 </footer>
 
-<div class="bar" id="bar" aria-hidden="true">
-  <div class="t"><b>MasterTech.ai</b>Free on the App Store</div>
-  <a class="badge sm" href="https://apps.apple.com/us/app/mastertech-ai/id6786938615" tabindex="-1"><img src="assets/appstore-badge.svg" alt="Download on the App Store" width="144" height="48"></a>
-</div>
 
 <script>
 (function(){
-  var bar=document.getElementById('bar'),ctas=document.getElementById('hero-ctas');
-  if(bar&&ctas&&'IntersectionObserver'in window){
-    new IntersectionObserver(function(e){
-      var r=e[0];var show=!r.isIntersecting&&r.boundingClientRect.top<0;
-      bar.classList.toggle('show',show);
-      bar.setAttribute('aria-hidden',show?'false':'true');
-      bar.querySelector('a').tabIndex=show?0:-1;
-    },{threshold:0}).observe(ctas);
-  }
   var v=document.querySelector('.hero-phone video');
   if(v&&window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     v.removeAttribute('autoplay');v.removeAttribute('loop');v.pause();

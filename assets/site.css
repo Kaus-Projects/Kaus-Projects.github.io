@@ -1,4 +1,4 @@
-/* MasterTech.ai marketing site — shared stylesheet. Static, no build step. */
+/* MasterTech marketing site — shared stylesheet. Static, no build step. */
 :root{
   --bg:#16181D;--panel:#202329;--panel2:#282C33;
   --line:rgba(255,255,255,.06);--line2:rgba(255,255,255,.13);
@@ -49,11 +49,16 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.1;text-wrap:bala
 .badge.md img{height:52px}
 .badge.sm img{height:48px}
 .badge:hover{opacity:.92}
+.soon{display:inline-flex;flex-direction:column-reverse;justify-content:center;height:56px;padding:0 18px;border:1px solid var(--line2);border-radius:9px;background:rgba(255,255,255,.03);line-height:1.05;white-space:nowrap;cursor:default;flex:none}
+.soon small{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.soon b{font-size:20px;font-weight:600;letter-spacing:-.01em;color:var(--text);margin-top:3px}
 .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:12px 14px;margin-top:28px}
 .ctas .micro{flex-basis:100%;margin-top:2px}
 .arrow{display:inline-flex;align-items:center;gap:8px;font-weight:600;text-decoration:none;color:var(--ink);min-height:44px}
 .arrow:hover{text-decoration:underline;text-underline-offset:3px}
 .arrow svg{width:18px;height:18px;flex:none}
+.arrow.down svg{transform:rotate(90deg)}
+.hero .ctas .arrow{margin-top:-6px;font-size:16px}
 
 /* ---------- header ---------- */
 .top{position:sticky;top:0;z-index:50;background:rgba(22,24,29,.84);-webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--line)}
@@ -64,10 +69,12 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.1;text-wrap:bala
 .nav{display:none;gap:22px}
 .nav a{color:var(--dim);text-decoration:none;font-weight:500;font-size:15px;padding:10px 0}
 .nav a:hover,.nav a[aria-current]{color:var(--text)}
-.top .badge{display:none}
-.top .role{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border:1px solid var(--line2);border-radius:999px;font-size:14px;font-weight:500;text-decoration:none;color:var(--text);white-space:nowrap}
-.top .role:hover{border-color:rgba(255,255,255,.3)}
-@media(min-width:720px){.top .badge{display:inline-block}.top .role{display:none}}
+.roles{display:flex;align-items:center;gap:2px;padding:3px;border:1px solid var(--line2);border-radius:999px;flex:none}
+.roles a{display:inline-flex;align-items:center;min-height:38px;padding:0 13px;border-radius:999px;font-size:14px;font-weight:500;line-height:1;color:var(--text);text-decoration:none;white-space:nowrap;transition:background .15s,color .15s}
+.roles a:hover{background:var(--panel2)}
+.roles a[aria-current]{background:rgba(65,105,240,.18);color:var(--ink)}
+.roles .l{display:none}
+@media(min-width:720px){.roles .s{display:none}.roles .l{display:inline}.roles a{padding:0 16px}}
 @media(min-width:900px){.nav{display:flex}}
 
 /* ---------- phone frame (grafted from draft A) ---------- */
@@ -95,14 +102,16 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.1;text-wrap:bala
 .hero-phone{width:min(100%,320px);position:relative}
 .hero-phone .poster{display:none}
 @media(min-width:900px){
-  .hero{padding:72px 0 24px}
+  .hero{padding:56px 0 32px}
   .hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:56px}
-  .hero-phone{width:min(100%,360px)}
-  .hero .ctas{order:1}
+  /* phone never taller than the first screen, so the App Store button stays above the fold */
+  .hero-phone{width:min(100%,clamp(240px,calc((100vh - 150px) * .46),340px))}
+  .hero .h1.long{font-size:clamp(2.2rem,4.4vw,3.35rem);max-width:19ch}
 }
 
 /* ---------- doors (kept from draft C) ---------- */
-.doors{display:grid;gap:16px;margin-top:40px}
+.doors-sec{padding:40px 0 64px}
+.doors{display:grid;gap:16px}
 .door{position:relative;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:24px 22px 0;overflow:hidden}
 .door::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--accent)}
 .door.crew::before{background:var(--ok)}
@@ -115,10 +124,13 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.1;text-wrap:bala
 .points li{display:flex;gap:10px;align-items:flex-start;font-size:16px;line-height:1.4}
 .points svg{flex:none;width:20px;height:20px;margin-top:2px;color:var(--ok)}
 .door .ctas{margin-top:22px}
+.door .ctas .micro{margin-top:0}
+.door .ctas .arrow{margin-top:-4px}
 .door .peek{margin-top:24px;height:250px}
 .door .peek .phone{width:min(100%,220px)}
 @media(min-width:900px){
-  .doors{grid-template-columns:1fr 1fr;gap:22px;margin-top:56px}
+  .doors-sec{padding:56px 0 112px}
+  .doors{grid-template-columns:1fr 1fr;gap:22px}
   .door{padding:28px 28px 0}
   .door .ctas{margin-top:auto;padding-top:24px}
   .door .peek{height:290px;margin-top:28px}
@@ -218,6 +230,7 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.1;text-wrap:bala
 .plan .bul svg{color:var(--ok)}
 .plan .ctas{margin-top:22px}
 .plan .micro{margin-top:14px}
+.plan .plan-note{margin-top:22px}
 .seats{margin-top:14px;font-size:15px;color:var(--dim)}
 .seats b{color:var(--text);font-weight:600}
 @media(min-width:800px){.plan{padding:32px}}
@@ -244,17 +257,8 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.1;text-wrap:bala
 @media(min-width:720px){.minis{grid-template-columns:1fr 1fr}}
 @media(min-width:900px){.minis{grid-template-columns:repeat(4,1fr);gap:16px}}
 
-/* final CTA */
-.final{position:relative;overflow:hidden;text-align:center}
-.final::before{content:"";position:absolute;left:50%;top:-40%;width:120%;max-width:900px;height:120%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(65,105,240,.18),transparent 75%);pointer-events:none}
-.final .wrap{position:relative;display:flex;flex-direction:column;align-items:center}
-.final .h2{margin-top:12px;max-width:18ch}
-.final .lede{margin-top:14px;text-align:center}
-.final .ctas{justify-content:center}
-.final .ctas .micro{text-align:center}
-
 /* footer */
-footer{border-top:1px solid var(--line);padding:44px 0 calc(110px + env(safe-area-inset-bottom))}
+footer{border-top:1px solid var(--line);padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
 .fbrand{font-weight:600;font-size:20px}
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px 18px;margin-top:28px}
 .fcol h4{margin:0 0 8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:600}
@@ -262,15 +266,8 @@ footer{border-top:1px solid var(--line);padding:44px 0 calc(110px + env(safe-are
 .fcol a:hover{color:var(--ink)}
 .fcol.support{grid-column:1/-1}
 .fmicro{margin-top:30px;font-size:13px;color:var(--dim);max-width:60ch}
-@media(min-width:800px){.fgrid{grid-template-columns:repeat(4,1fr)}.fcol.support{grid-column:auto}}
+@media(min-width:800px){.fgrid{grid-template-columns:repeat(3,1fr)}.fcol.support{grid-column:auto}}
 @media(min-width:900px){footer{padding-bottom:48px}}
-
-/* sticky App Store bar (phones only; grafted from draft A) */
-.bar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(32,35,41,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line2);padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;gap:12px;transform:translateY(110%);visibility:hidden;transition:transform .25s ease,visibility .25s}
-.bar.show{transform:none;visibility:visible}
-.bar .t{font-size:13px;color:var(--dim);line-height:1.25;min-width:0}
-.bar .t b{display:block;color:var(--text);font-weight:600;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-@media(min-width:900px){.bar{display:none}}
 
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
