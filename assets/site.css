@@ -216,24 +216,30 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.1;text-wrap:bala
 .chip small{font-size:13px;color:var(--dim);font-weight:400}
 .tools .micro{margin-top:18px;max-width:64ch}
 
-/* pricing (one plain card) */
-.plans{display:grid;gap:16px;margin-top:32px;max-width:640px}
-.plan{background:var(--panel);border:1px solid rgba(65,105,240,.55);box-shadow:0 0 0 4px rgba(65,105,240,.1);border-radius:var(--r);padding:26px 22px}
+/* pricing: Free / Individual / Company cards + "talk to us" strip */
+.plans{display:grid;gap:16px;margin-top:32px}
+@media(min-width:720px){.plans.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:920px}}
+@media(min-width:960px){.plans.three{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.plan{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line2);border-radius:var(--r);padding:26px 22px}
+.plan.accent{border-color:rgba(65,105,240,.55);box-shadow:0 0 0 4px rgba(65,105,240,.1)}
 .plan .name{font-weight:600;font-size:13px;color:var(--dim);letter-spacing:.12em;text-transform:uppercase}
-.prices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
-.price{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:14px 14px 12px}
-.price b{display:block;font-size:clamp(1.9rem,7vw,2.6rem);font-weight:600;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
-.price span{display:block;color:var(--dim);font-size:14px;margin-top:6px;line-height:1.35}
-.plan .free{margin-top:16px;padding:14px 16px;border-radius:14px;background:rgba(52,199,123,.1);border:1px solid rgba(52,199,123,.35);font-size:15px;line-height:1.45}
-.plan .free b{color:var(--ok);font-weight:600}
-.plan .bul{margin-top:18px}
+.plan.accent .name{color:var(--ink)}
+.plan .amount{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin-top:12px}
+.plan .amount b{font-size:clamp(2.3rem,7vw,2.9rem);font-weight:600;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.plan .amount span{color:var(--dim);font-size:15px}
+.plan .alt{margin-top:8px;color:var(--dim);font-size:14px;line-height:1.4}
+.plan .bul{margin-top:20px}
 .plan .bul svg{color:var(--ok)}
-.plan .ctas{margin-top:22px}
-.plan .micro{margin-top:14px}
-.plan .plan-note{margin-top:22px}
-.seats{margin-top:14px;font-size:15px;color:var(--dim)}
+.seats{margin-top:14px;font-size:15px;color:var(--dim);line-height:1.5;display:flex;flex-wrap:wrap;gap:4px 16px}
+.seats span{white-space:nowrap}
+.seats b{margin-right:6px}
 .seats b{color:var(--text);font-weight:600}
-@media(min-width:800px){.plan{padding:32px}}
+.talk{margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 18px;background:var(--panel);border:1px solid var(--line2);border-radius:var(--r);padding:16px 22px}
+.band .talk{background:var(--panel2)}
+.talk p{font-weight:500;font-size:17px}
+.plans+.talk,.plans+.plan-note{margin-top:16px}
+.plan-note{margin-top:18px;max-width:70ch}
+@media(min-width:800px){.plan{padding:30px 28px}}
 
 /* faq */
 .faq{margin-top:24px;border-top:1px solid var(--line);max-width:760px}
