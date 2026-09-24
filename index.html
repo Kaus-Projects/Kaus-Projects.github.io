@@ -86,7 +86,6 @@
             <source src="assets/hero.mp4?vfb01f65" type="video/mp4">
             <source src="assets/hero.webm?vfb01f65" type="video/webm">
           </video>
-          <button class="tap" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
           <img class="shot poster" src="assets/hero-poster.jpg?vfb01f65" width="540" height="1174" alt="iPhone showing a MasterTech call: measurement tiles for superheat, subcool, suction and head, and an AI Diagnosis card reading Low refrigerant charge at 86% confidence.">
         </div>
       </div>
@@ -396,13 +395,28 @@
     if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
       v.removeAttribute('autoplay');v.removeAttribute('loop');v.pause();
     }else{
-      // Autoplay can be refused (iOS Low Power Mode, data saver): retry once, then show a tap-to-play control.
-      v.muted=true;
-      var tryPlay=function(){var p=v.play();if(p&&p.catch)p.catch(function(){ph.classList.add('needs-tap');});};
-      tryPlay();
-      v.addEventListener('playing',function(){ph.classList.remove('needs-tap');});
-      ph.addEventListener('click',function(){if(ph.classList.contains('needs-tap'))tryPlay();});
-      document.addEventListener('visibilitychange',function(){if(!document.hidden&&v.paused&&!ph.classList.contains('needs-tap'))tryPlay();});
+      // Phones can refuse to autoplay <video> (iOS Low Power Mode, data saver, some in-app
+      // browsers). Animated images are never blocked, so swap in the same clip as an
+      // animated WebP. It only downloads when the video was refused.
+      var swapped=false,started=false;
+      var toImage=function(){
+        if(swapped||started)return;swapped=true;
+        var img=new Image();img.className='shot anim';img.width=540;img.height=1174;img.decoding='async';
+        img.alt=v.getAttribute('aria-label')||'';
+        img.onload=function(){v.replaceWith(img);};
+        img.src='assets/hero-anim.webp?v=anim-0a48fd4';
+      };
+      v.addEventListener('playing',function(){started=true;});
+      v.muted=true;v.playsInline=true;
+      if(/[?&]anim=1/.test(location.search)){toImage();}
+      else{
+        var p=v.play();if(p&&p.catch)p.catch(toImage);
+        // neither playing nor rejected: once it has data but still sits paused, it was refused
+        var t=0,iv=setInterval(function(){t+=500;
+          if(started||swapped||t>15000){clearInterval(iv);return;}
+          if(t>=3000&&v.paused&&v.readyState>=2){clearInterval(iv);toImage();}
+        },500);
+      }
     }
   }
 })();

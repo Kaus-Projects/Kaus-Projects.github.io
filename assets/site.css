@@ -101,9 +101,6 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.02em;line-height:1.1;text-wrap:bala
 .hero-visual::before{content:"";position:absolute;inset:6% -10% 0;background:radial-gradient(55% 45% at 50% 34%,rgba(65,105,240,.32),transparent 70%);filter:blur(26px);pointer-events:none}
 .hero-phone{width:min(100%,320px);position:relative}
 .hero-phone .poster{display:none}
-.hero-phone .tap{display:none;position:absolute;left:50%;top:50%;width:72px;height:72px;transform:translate(-50%,-50%);z-index:3;border:0;border-radius:50%;background:rgba(65,105,240,.92);color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.5);cursor:pointer;align-items:center;justify-content:center;padding:0 0 0 4px}
-.hero-phone.needs-tap .tap{display:inline-flex}
-.hero-phone.needs-tap video{filter:brightness(.6)}
 @media(min-width:900px){
   .hero{padding:56px 0 32px}
   .hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:56px}
