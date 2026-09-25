@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Upgrade or manage your plan — MasterTech</title>
+<meta name="description" content="Sign in with your MasterTech account to buy or manage your plan on the web.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://joinmastertech.com/upgrade/">
+<meta name="theme-color" content="#16181D">
+<meta name="color-scheme" content="dark">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=de02537">
+<style>
+/* /upgrade — the web half of billing for phones that can't check out in the app. */
+.up{padding:40px 0 72px}
+.up .wrap{max-width:600px}
+.up .h1{font-size:clamp(1.9rem,6.4vw,2.7rem);margin-top:12px}
+.up .lede{margin-top:14px}
+.card{margin-top:28px;background:var(--panel);border:1px solid var(--line2);border-radius:var(--r);padding:24px 20px}
+@media(min-width:720px){.card{padding:30px 28px}}
+.card+.card{margin-top:16px}
+.card .eyebrow{color:var(--dim)}
+.card .h3{margin-top:8px}
+.card .body{margin-top:10px;color:var(--dim);font-size:16px}
+label{display:block;font-size:14px;font-weight:500;color:var(--dim);margin:18px 0 6px}
+input{width:100%;font:inherit;font-size:17px;padding:13px 16px;border:1px solid var(--line2);border-radius:14px;background:var(--panel2);color:var(--text);min-height:52px}
+input::placeholder{color:rgba(154,161,170,.6)}
+input:focus{outline:2px solid var(--ink);outline-offset:0;border-color:transparent}
+.btn{width:100%;margin-top:22px;cursor:pointer;font-family:inherit}
+.btn[disabled]{opacity:.55;cursor:default;transform:none}
+.btn.secondary{margin-top:12px}
+.msg{margin-top:14px;font-size:15px;line-height:1.45;min-height:1.45em}
+.msg.bad{color:#FFB8B3}
+.msg.ok{color:var(--ok)}
+.links{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px}
+.links a{color:var(--ink);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+@media(hover:hover){.links a:hover{text-decoration:underline;text-underline-offset:3px}}
+.links button{background:none;border:0;padding:0;color:var(--ink);font:inherit;font-size:15px;cursor:pointer;min-height:44px}
+@media(hover:hover){.links button:hover{text-decoration:underline;text-underline-offset:3px}}
+.who{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px}
+.who .email{font-size:15px;color:var(--dim);overflow-wrap:anywhere}
+.stamp{display:inline-flex;align-items:center;min-height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--line2);background:var(--panel2);font-size:13px;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+.stamp.ok{color:var(--ok);border-color:rgba(52,199,123,.45)}
+.stamp.bad{color:var(--bad);border-color:rgba(255,90,82,.45)}
+.stamp.accent{color:var(--ink);border-color:rgba(65,105,240,.55)}
+.usage{margin-top:10px;font-size:15px;color:var(--dim)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:18px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:4px}
+.seg button{font:inherit;font-size:15px;font-weight:500;color:var(--dim);background:none;border:0;border-radius:9px;min-height:42px;cursor:pointer}
+.seg button[aria-checked="true"]{background:var(--accent);color:#fff}
+.seg button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.price{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin-top:18px}
+.price b{font-size:clamp(2.3rem,7vw,2.9rem);font-weight:600;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.price span{color:var(--dim);font-size:15px}
+.incl{margin-top:8px;color:var(--dim);font-size:15px}
+.seats-line{margin-top:10px;font-size:15px;color:var(--text)}
+.talk-line{margin-top:16px;font-size:15px;color:var(--dim)}
+.talk-line a{color:var(--ink);text-decoration:none}
+.talk-line.prominent{color:var(--text);font-weight:500}
+.spin{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,.25);border-top-color:#fff;border-radius:50%;animation:sp .8s linear infinite;vertical-align:-4px;margin-right:8px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.loading{margin-top:28px;color:var(--dim);font-size:15px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.8 3.5h2.6l1.4 4.1-2 1.3a11.5 11.5 0 0 0 6.3 6.3l1.3-2 4.1 1.4v2.6a2.3 2.3 0 0 1-2.5 2.3A15.6 15.6 0 0 1 4.5 6a2.3 2.3 0 0 1 2.3-2.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="MasterTech home"><img class="mark" src="../assets/mark-64.png?v=c7eb0d1" width="17" height="17" alt="">MasterTech</a>
+    <nav class="roles" aria-label="By role">
+      <a href="../techs/"><span class="l">For technicians</span><span class="s">Techs</span></a>
+      <a href="../contractors/"><span class="l">For contractors</span><span class="s">Contractors</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="up" aria-labelledby="up-h1">
+    <div class="wrap">
+      <p class="eyebrow">Your plan</p>
+      <h1 id="up-h1" class="h1">Upgrade or manage your MasterTech plan.</h1>
+      <p class="lede">Plans are bought and managed here on the web. Sign in with the email and password you use in the app; the app picks up any change on its own.</p>
+
+      <!-- Sign in -->
+      <section class="card" id="signin-view" hidden aria-labelledby="signin-h">
+        <p class="eyebrow">Sign in</p>
+        <h2 id="signin-h" class="h3">Your MasterTech account</h2>
+        <form id="signin-form" autocomplete="on" novalidate>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="username" inputmode="email" autocapitalize="none" spellcheck="false" required placeholder="you@company.com">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Your app password">
+          <button class="btn primary" id="signin-go" type="submit">Sign in</button>
+          <p class="msg" id="signin-msg" role="alert" aria-live="polite"></p>
+        </form>
+        <div class="links">
+          <a href="https://joinmastertech.com/mastertech-legal/auth/reset.html">Forgot your password?</a>
+        </div>
+        <p class="micro" style="margin-top:18px">No account yet? Create one in the MasterTech app first.</p>
+      </section>
+
+      <!-- Loading -->
+      <p class="loading" id="loading-view" hidden aria-live="polite"><span class="spin" aria-hidden="true"></span>Checking your plan…</p>
+
+      <!-- Signed in: current plan -->
+      <section class="card" id="plan-view" hidden aria-labelledby="plan-h">
+        <div class="who">
+          <span class="email" id="who-email"></span>
+          <span class="stamp" id="stamp"></span>
+        </div>
+        <h2 id="plan-h" class="h3" style="margin-top:18px"></h2>
+        <p class="body" id="plan-body"></p>
+        <p class="usage" id="usage" hidden></p>
+
+        <!-- Checkout (free / canceled, can_buy) -->
+        <div id="checkout" hidden>
+          <div class="seg" role="radiogroup" aria-label="Billing interval">
+            <button type="button" role="radio" aria-checked="true" data-interval="month">Monthly</button>
+            <button type="button" role="radio" aria-checked="false" data-interval="year">Annual</button>
+          </div>
+          <p class="price"><b id="price"></b><span id="per"></span></p>
+          <p class="incl" id="includes"></p>
+          <p class="seats-line" id="seats-line" hidden></p>
+          <button class="btn primary" id="checkout-go" type="button">Continue to secure checkout</button>
+          <p class="micro" style="margin-top:12px">Secure payment by Stripe. Cancel any time.</p>
+          <p class="talk-line" id="talk" hidden></p>
+        </div>
+
+        <!-- Manage (subscribed, can_buy) -->
+        <div id="manage" hidden>
+          <button class="btn primary" id="manage-go" type="button">Manage subscription</button>
+          <p class="micro" style="margin-top:12px">Update your card, change your plan, download invoices or cancel.</p>
+        </div>
+
+        <p class="msg" id="plan-msg" role="alert" aria-live="polite"></p>
+        <div class="links">
+          <button type="button" id="refresh">Refresh</button>
+          <button type="button" id="signout">Sign out</button>
+        </div>
+      </section>
+
+      <!-- Fatal / unreachable -->
+      <section class="card" id="error-view" hidden aria-labelledby="error-h">
+        <p class="eyebrow">Billing</p>
+        <h2 id="error-h" class="h3">Couldn't reach billing.</h2>
+        <p class="body" id="error-body">Check your connection and try again.</p>
+        <button class="btn ghost" id="error-retry" type="button">Try again</button>
+        <div class="links"><button type="button" id="error-signout">Sign out</button></div>
+      </section>
+
+      <p class="micro" style="margin-top:28px">Techs on a company plan never pay: your contractor's plan covers you once you're on their team. Questions? Call or text <a href="tel:+12146821825" style="color:var(--ink);text-decoration:none">214-682-1825</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer aria-label="Footer">
+  <div class="wrap">
+    <p class="fbrand">MasterTech</p>
+    <p class="dim">Built for the field.</p>
+    <div class="fgrid">
+      <div class="fcol">
+        <h4>By role</h4>
+        <a href="../techs/">For technicians</a>
+        <a href="../contractors/">For contractors</a>
+      </div>
+      <div class="fcol">
+        <h4>Legal</h4>
+        <a href="https://joinmastertech.com/mastertech-legal/privacy.html">Privacy Policy</a>
+        <a href="https://joinmastertech.com/mastertech-legal/terms.html">Terms of Service</a>
+      </div>
+      <div class="fcol support">
+        <h4>Contact</h4>
+        <a class="btn ghost call" href="tel:+12146821825"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call or text 214-682-1825</a>
+      </div>
+    </div>
+    <p class="fmicro">© 2026 MasterTech. Apple, iPhone and App Store are trademarks of Apple Inc.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function () {
+  'use strict';
+  // Public project values — the same ones the app ships with (EXPO_PUBLIC_*).
+  var SUPABASE_URL = 'https://sbiilbpgfykswbvggeda.supabase.co';
+  var ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNiaWlsYnBnZnlrc3didmdnZWRhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3MzgwNzEsImV4cCI6MjA5OTMxNDA3MX0.czUoCrmlwXl_Le4pSGh2opsA9M0CHpMkWCIEnsmat6M';
+  var PHONE = '214-682-1825';
+  var TEL = 'tel:+12146821825';
+  // Fallback prices when the server sends no `pricing` (kept in step with
+  // billing_plans / the app's BILLING_PRICING).
+  var FALLBACK = {
+    solo: { label: 'Individual', monthly_cents: 999, annual_cents: 9900, per_seat: false, monthly_limit: 60, contact_min_seats: null, checkout_enabled: true },
+    company: { label: 'Company', monthly_cents: 2900, annual_cents: 29000, per_seat: true, monthly_limit: null, contact_min_seats: 10, checkout_enabled: true },
+    freeMonthly: 5
+  };
+  var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  var $ = function (id) { return document.getElementById(id); };
+  var VIEWS = ['signin-view', 'loading-view', 'plan-view', 'error-view'];
+  function show(id) { VIEWS.forEach(function (v) { $(v).hidden = v !== id; }); }
+  function say(id, text, cls) { var m = $(id); m.textContent = text || ''; m.className = 'msg' + (cls ? ' ' + cls : ''); }
+
+  if (!window.supabase || typeof window.supabase.createClient !== 'function') {
+    $('error-body').textContent = "The sign-in library didn't load. Check your connection and reload the page.";
+    $('error-retry').addEventListener('click', function () { location.reload(); });
+    $('error-signout').hidden = true;
+    show('error-view');
+    return;
+  }
+  var sb = window.supabase.createClient(SUPABASE_URL, ANON);
+
+  var state = null;       // org_billing_state() payload
+  var email = '';
+  var interval = 'month'; // 'month' | 'year'
+  var busy = false;
+
+  /* ------------------------------ helpers ------------------------------ */
+  function formatCents(c) {
+    c = Math.max(0, Math.round(Number(c) || 0));
+    var whole = String(Math.floor(c / 100)).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    var rem = c % 100;
+    return rem === 0 ? '$' + whole : '$' + whole + '.' + (rem < 10 ? '0' : '') + rem;
+  }
+  function resetDate(iso) {
+    var d = iso ? new Date(iso) : null;
+    if (!d || !isFinite(d.getTime())) { var n = new Date(); d = new Date(Date.UTC(n.getUTCFullYear(), n.getUTCMonth() + 1, 1)); }
+    return MONTHS[d.getUTCMonth()] + ' ' + d.getUTCDate();
+  }
+  function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
+  function kindOf(s) { return s && s.kind === 'company' ? 'company' : 'solo'; }
+  function pricingFor(s) {
+    var k = kindOf(s);
+    var p = s && s.pricing && s.pricing.kind === k ? s.pricing : {};
+    var fb = FALLBACK[k];
+    function num(v, d) { return typeof v === 'number' && isFinite(v) && v > 0 ? v : d; }
+    return {
+      kind: k,
+      label: (typeof p.label === 'string' && p.label.trim()) ? p.label.trim() : fb.label,
+      monthly_cents: num(p.monthly_cents, fb.monthly_cents),
+      annual_cents: num(p.annual_cents, fb.annual_cents),
+      per_seat: typeof p.per_seat === 'boolean' ? p.per_seat : fb.per_seat,
+      monthly_limit: p.monthly_limit === null ? null : (typeof p.monthly_limit === 'number' ? p.monthly_limit : fb.monthly_limit),
+      contact_min_seats: p.contact_min_seats === null ? null : (typeof p.contact_min_seats === 'number' ? p.contact_min_seats : fb.contact_min_seats),
+      checkout_enabled: typeof p.checkout_enabled === 'boolean' ? p.checkout_enabled : fb.checkout_enabled
+    };
+  }
+  function usage(s) {
+    var used = typeof s.month_used === 'number' ? s.month_used : (Number(s.free_used) || 0);
+    var limit;
+    if (s.month_limit === null) limit = null;
+    else if (typeof s.month_limit === 'number') limit = s.month_limit;
+    else if (s.plan_status === 'free' || s.plan_status === 'canceled') limit = Number(s.free_monthly_limit || s.free_limit || FALLBACK.freeMonthly);
+    else limit = null;
+    return { used: used, limit: limit };
+  }
+  function subscribed(s) { return s.plan_status === 'active' || s.plan_status === 'trialing'; }
+  function canManage(s) {
+    return !!s && s.has_subscription === true && s.can_buy === true &&
+      (s.plan_status === 'active' || s.plan_status === 'trialing' || s.plan_status === 'past_due');
+  }
+  function stampFor(s) {
+    if (!s) return { text: '—', tone: '' };
+    if (s.plan_status === 'comped' || s.tier === 'comped') return { text: 'Complimentary', tone: 'ok' };
+    if (s.plan_status === 'past_due') return { text: 'Past due', tone: 'bad' };
+    if (s.plan_status === 'canceled') return { text: 'Canceled', tone: 'bad' };
+    var p = pricingFor(s);
+    var paidTone = s.plan_status === 'trialing' ? 'accent' : 'ok';
+    if (s.tier === 'company') return { text: 'Company · ' + plural(Number(s.seats) || 1, 'seat', 'seats'), tone: paidTone };
+    var u = usage(s);
+    var label = s.tier === 'solo' ? p.label : 'Free';
+    if (u.limit === null) return { text: label + ' · ' + u.used + ' this month', tone: paidTone };
+    var capped = u.used >= u.limit;
+    return { text: label + ' · ' + Math.min(u.used, u.limit) + ' of ' + u.limit + ' this month', tone: capped ? 'bad' : (s.tier === 'solo' ? paidTone : '') };
+  }
+  // Human copy for a failed checkout / portal call (mirrors the app).
+  function errorText(code) {
+    var c = String(code || '').toLowerCase();
+    if (c === 'no_customer') return 'No billing account yet — start with checkout.';
+    if (c === 'unauthenticated' || c.indexOf('jwt') >= 0) return 'Your session expired — sign in again.';
+    if (c === 'no_org') return "Your account isn't linked to a company yet. Finish setting up in the app first.";
+    if (c === 'already_subscribed') return 'You already have an active plan — use Manage subscription instead.';
+    if (c === 'contact_sales') return 'This plan is set up with our team — call or text ' + PHONE + " and we'll get you going.";
+    if (c === 'bad_interval') return 'Pick Monthly or Annual and try again.';
+    if (/forbid|not_allowed|not_authori|admin|can_buy|unauthori/.test(c)) return 'Only your company admin can activate MasterTech.';
+    if (c === 'failed to fetch' || c === 'networkerror' || c.indexOf('network') >= 0) return "You're offline — reconnect to open billing.";
+    return "Couldn't open billing right now. Try again in a moment.";
+  }
+  function authErrorText(err) {
+    var msg = String((err && err.message) || '').toLowerCase();
+    var status = err && err.status;
+    var code = (err && err.code) || '';
+    if (status === 429 || code === 'over_request_rate_limit' || msg.indexOf('rate limit') >= 0) return 'Too many sign-in attempts from this network. Wait a few minutes and try again.';
+    if (code === 'invalid_credentials' || msg.indexOf('invalid login') >= 0 || msg.indexOf('invalid credentials') >= 0) return "That email or password isn't right.";
+    if (code === 'email_not_confirmed' || msg.indexOf('not confirmed') >= 0) return 'Confirm your email first — check your inbox for the link from MasterTech.';
+    if (msg.indexOf('fetch') >= 0 || msg.indexOf('network') >= 0) return 'Network error — check your connection and try again.';
+    return (err && err.message) ? err.message : "Couldn't sign in. Try again in a moment.";
+  }
+
+  /* --------------------------- edge functions --------------------------- */
+  // Invoke an edge function that answers { url }. A non-2xx is a generic
+  // FunctionsHttpError; the real code (403 not_authorized, 409 no_customer /
+  // already_subscribed / contact_sales, 503 billing_unavailable…) is in the body.
+  function invokeForUrl(name, body) {
+    return sb.functions.invoke(name, { body: body }).then(function (r) {
+      if (r.error) {
+        var ctx = r.error.context;
+        var fallback = { error: r.error.message || 'billing_unavailable' };
+        if (ctx && typeof ctx.json === 'function') {
+          return ctx.json().then(function (j) { return (j && j.error) ? { error: String(j.error) } : fallback; }, function () { return fallback; });
+        }
+        return fallback;
+      }
+      if (r.data && r.data.error) return { error: String(r.data.error) };
+      if (!r.data || typeof r.data.url !== 'string' || !r.data.url) return { error: 'no_url' };
+      return { url: r.data.url };
+    }, function (e) { return { error: (e && e.message) || 'billing_unavailable' }; });
+  }
+
+  /* -------------------------------- render ------------------------------- */
+  function render() {
+    var s = state;
+    $('who-email').textContent = email;
+    var st = stampFor(s);
+    $('stamp').textContent = st.text;
+    $('stamp').className = 'stamp' + (st.tone ? ' ' + st.tone : '');
+    $('checkout').hidden = true;
+    $('manage').hidden = true;
+    $('usage').hidden = true;
+    $('talk').hidden = true;
+    say('plan-msg', '');
+
+    if (!s) {
+      $('plan-h').textContent = 'No company on this account yet.';
+      $('plan-body').textContent = "Your account isn't linked to a company yet. Open the MasterTech app to finish setting up, then come back here.";
+      show('plan-view');
+      return;
+    }
+
+    var p = pricingFor(s);
+    var u = usage(s);
+    var techCount = typeof s.tech_count === 'number' ? s.tech_count : null;
+
+    if (s.plan_status === 'comped' || s.tier === 'comped') {
+      $('plan-h').textContent = "You're all set.";
+      $('plan-body').textContent = 'MasterTech is complimentary for your organization. There is nothing to buy.';
+    } else if (subscribed(s)) {
+      $('plan-h').textContent = "You're all set.";
+      $('plan-body').textContent = 'MasterTech is active for your organization.';
+      if (u.limit !== null) {
+        $('usage').textContent = Math.min(u.used, u.limit) + ' of ' + u.limit + ' diagnostics used this month · resets ' + resetDate(s.resets_at);
+        $('usage').hidden = false;
+      }
+      if (canManage(s)) $('manage').hidden = false;
+      else if (!s.can_buy) $('plan-body').textContent = 'MasterTech is active for your organization. Your company admin manages the plan.';
+    } else if (!s.can_buy) {
+      $('plan-h').textContent = 'Your company admin activates the plan.';
+      $('plan-body').textContent = "Plans are bought per company. Ask your admin to activate MasterTech; once they do, your diagnostics are covered.";
+    } else if (s.plan_status === 'past_due' && s.has_subscription) {
+      $('plan-h').textContent = 'Payment needs attention.';
+      $('plan-body').textContent = "Your last payment didn't go through. Update your card to keep MasterTech running.";
+      $('manage-go').textContent = 'Update payment method';
+      $('manage').hidden = false;
+    } else {
+      // free / canceled with buyer rights → Stripe Checkout
+      var free = Number(s.free_monthly_limit || s.free_limit || FALLBACK.freeMonthly);
+      var intro;
+      if (s.plan_status === 'canceled') intro = "Your subscription ended — you're back to " + free + ' free diagnostics every month. Re-activate to keep every call moving.';
+      else if (s.plan_status === 'past_due') intro = "Your last payment didn't go through. Start a new subscription to keep going.";
+      else {
+        var lim = u.limit === null ? free : u.limit;
+        var left = Math.max(0, lim - u.used);
+        intro = left === 0
+          ? "You've used this month's " + lim + ' free diagnostics. They reset on ' + resetDate(s.resets_at) + ' — activate MasterTech to keep every call moving.'
+          : 'You get ' + lim + ' free diagnostics every month — ' + left + ' left, resets ' + resetDate(s.resets_at) + '.';
+      }
+      $('plan-h').textContent = p.kind === 'company' ? 'Activate MasterTech for your crew.' : 'Keep diagnosing.';
+      $('plan-body').textContent = intro;
+      renderCheckout(s, p, techCount);
+      $('checkout').hidden = false;
+    }
+    show('plan-view');
+  }
+
+  function renderCheckout(s, p, techCount) {
+    var annual = interval === 'year';
+    var cents = annual ? p.annual_cents : p.monthly_cents;
+    var per = annual ? '/ year' : '/ month';
+    $('price').textContent = formatCents(cents);
+    $('per').textContent = p.label + (p.per_seat ? ' · per tech ' + per : ' ' + per);
+    $('includes').textContent = p.monthly_limit === null ? 'Unlimited diagnostics for every tech' : p.monthly_limit + ' guided diagnostics a month';
+    var segs = $('checkout').querySelectorAll('.seg button');
+    for (var i = 0; i < segs.length; i++) segs[i].setAttribute('aria-checked', segs[i].getAttribute('data-interval') === interval ? 'true' : 'false');
+
+    var line = $('seats-line');
+    if (p.kind === 'company') {
+      var n = Math.max(1, Math.floor(Number(techCount)) || 1);
+      line.textContent = plural(n, 'tech', 'techs') + ' × ' + formatCents(cents) + ' = ' + formatCents(cents * n) + ' ' + per + ' · adjust at checkout';
+      line.hidden = false;
+    } else {
+      line.hidden = true;
+    }
+
+    var go = $('checkout-go');
+    var talk = $('talk');
+    if (p.kind === 'company' && p.contact_min_seats !== null) {
+      var min = p.contact_min_seats;
+      var prominent = (Number(techCount) || 0) >= min;
+      talk.innerHTML = 'Running ' + min + '+ techs? <a href="' + TEL + '">Talk to us: ' + PHONE + '</a>';
+      talk.className = 'talk-line' + (prominent ? ' prominent' : '');
+      talk.hidden = false;
+    }
+    if (!p.checkout_enabled) {
+      go.hidden = true;
+      talk.innerHTML = 'This plan is set up with our team — <a href="' + TEL + '">call or text ' + PHONE + '</a> and we\'ll get you going.';
+      talk.className = 'talk-line prominent';
+      talk.hidden = false;
+    } else {
+      go.hidden = false;
+    }
+  }
+
+  /* -------------------------------- flows -------------------------------- */
+  function load() {
+    show('loading-view');
+    return sb.auth.getSession().then(function (r) {
+      var session = r && r.data ? r.data.session : null;
+      if (!session) { show('signin-view'); return; }
+      email = (session.user && session.user.email) || '';
+      return sb.rpc('org_billing_state').then(function (q) {
+        if (q.error) {
+          if (q.error.code === 'PGRST301' || /jwt/i.test(q.error.message || '')) return signOut();
+          $('error-body').textContent = 'Check your connection and try again.';
+          show('error-view');
+          return;
+        }
+        state = Array.isArray(q.data) ? q.data[0] : q.data;
+        render();
+      });
+    }).catch(function () {
+      $('error-body').textContent = 'Check your connection and try again.';
+      show('error-view');
+    });
+  }
+
+  function signOut() {
+    state = null; email = '';
+    return sb.auth.signOut().catch(function () {}).then(function () {
+      $('password').value = '';
+      say('signin-msg', '');
+      show('signin-view');
+    });
+  }
+
+  $('signin-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (busy) return;
+    var em = $('email').value.trim(), pw = $('password').value;
+    if (!em || !pw) return say('signin-msg', 'Enter your email and password.', 'bad');
+    busy = true; $('signin-go').disabled = true; say('signin-msg', 'Signing in…');
+    sb.auth.signInWithPassword({ email: em, password: pw }).then(function (r) {
+      busy = false; $('signin-go').disabled = false;
+      if (r.error) return say('signin-msg', authErrorText(r.error), 'bad');
+      $('password').value = '';
+      say('signin-msg', '');
+      return load();
+    }).catch(function (err) {
+      busy = false; $('signin-go').disabled = false;
+      say('signin-msg', authErrorText(err), 'bad');
+    });
+  });
+
+  $('checkout').addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.seg button');
+    if (!b) return;
+    interval = b.getAttribute('data-interval') === 'year' ? 'year' : 'month';
+    if (state) renderCheckout(state, pricingFor(state), typeof state.tech_count === 'number' ? state.tech_count : null);
+  });
+
+  $('checkout-go').addEventListener('click', function () {
+    if (busy) return;
+    busy = true; $('checkout-go').disabled = true; say('plan-msg', 'Opening secure checkout…');
+    invokeForUrl('create-checkout-session', { interval: interval }).then(function (r) {
+      if (r.url) { location.href = r.url; return; }
+      busy = false; $('checkout-go').disabled = false;
+      if (r.error === 'unauthenticated') return signOut().then(function () { say('signin-msg', errorText(r.error), 'bad'); });
+      if (r.error === 'already_subscribed') { say('plan-msg', errorText(r.error), 'bad'); return load(); }
+      say('plan-msg', errorText(r.error), 'bad');
+    });
+  });
+
+  $('manage-go').addEventListener('click', function () {
+    if (busy) return;
+    busy = true; $('manage-go').disabled = true; say('plan-msg', 'Opening your billing portal…');
+    invokeForUrl('create-portal-session', {}).then(function (r) {
+      if (r.url) { location.href = r.url; return; }
+      busy = false; $('manage-go').disabled = false;
+      if (r.error === 'unauthenticated') return signOut().then(function () { say('signin-msg', errorText(r.error), 'bad'); });
+      say('plan-msg', errorText(r.error), 'bad');
+    });
+  });
+
+  $('refresh').addEventListener('click', function () { if (!busy) load(); });
+  $('signout').addEventListener('click', function () { if (!busy) signOut(); });
+  $('error-retry').addEventListener('click', function () { load(); });
+  $('error-signout').addEventListener('click', function () { signOut(); });
+
+  load();
+})();
+</script>
+</body>
+</html>
